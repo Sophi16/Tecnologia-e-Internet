@@ -3,205 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Quiz de Tecnologia</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .quiz-container {
-            background: white;
-            width: 100%;
-            max-width: 650px;
-            padding: 35px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-        }
-
-        h1 {
-            text-align: center;
-            color: #312e81;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .progress {
-            width: 100%;
-            height: 10px;
-            background: #e5e7eb;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 25px;
-        }
-
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            background: #4f46e5;
-            transition: 0.3s;
-        }
-
-        .question-number {
-            color: #4f46e5;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .question {
-            font-size: 22px;
-            font-weight: bold;
-            color: #222;
-            margin-bottom: 25px;
-        }
-
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .option {
-            border: 2px solid #ddd;
-            background: #fff;
-            padding: 15px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: 0.2s;
-            font-size: 16px;
-        }
-
-        .option:hover {
-            border-color: #4f46e5;
-            background: #f5f3ff;
-        }
-
-        .option.correct {
-            background: #dcfce7;
-            border-color: #22c55e;
-            color: #166534;
-        }
-
-        .option.wrong {
-            background: #fee2e2;
-            border-color: #ef4444;
-            color: #991b1b;
-        }
-
-        .option.disabled {
-            pointer-events: none;
-        }
-
-        .feedback {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 10px;
-            display: none;
-            line-height: 1.5;
-        }
-
-        .feedback.correct {
-            display: block;
-            background: #dcfce7;
-            color: #166534;
-        }
-
-        .feedback.wrong {
-            display: block;
-            background: #fee2e2;
-            color: #991b1b;
-        }
-
-        .hint {
-            margin-top: 15px;
-            color: #555;
-            font-size: 14px;
-            display: none;
-        }
-
-        .hint-button {
-            margin-top: 15px;
-            border: none;
-            background: #f3f4f6;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .next-button {
-            width: 100%;
-            margin-top: 25px;
-            padding: 15px;
-            border: none;
-            border-radius: 12px;
-            background: #4f46e5;
-            color: white;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-            display: none;
-        }
-
-        .next-button:hover {
-            background: #4338ca;
-        }
-
-        .result {
-            text-align: center;
-            display: none;
-        }
-
-        .result h2 {
-            font-size: 30px;
-            color: #312e81;
-            margin-bottom: 15px;
-        }
-
-        .score {
-            font-size: 50px;
-            font-weight: bold;
-            color: #4f46e5;
-            margin: 20px 0;
-        }
-
-        .restart {
-            border: none;
-            padding: 15px 30px;
-            background: #4f46e5;
-            color: white;
-            border-radius: 10px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .restart:hover {
-            background: #4338ca;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="quiz-container">
+    <main class="quiz-container">
 
-        <div id="quiz">
+        <section id="quiz">
 
             <h1>Quiz de Tecnologia</h1>
 
@@ -210,316 +22,48 @@
             </p>
 
             <div class="progress">
-                <div class="progress-bar" id="progressBar"></div>
+                <div id="progressBar"></div>
             </div>
 
-            <div class="question-number" id="questionNumber"></div>
+            <p id="questionNumber"></p>
 
-            <div class="question" id="question"></div>
+            <h2 id="question"></h2>
 
-            <div class="options" id="options"></div>
+            <div id="options"></div>
 
-            <button class="hint-button" id="hintButton">
+            <button id="hintButton" class="hint-button">
                 💡 Mostrar dica
             </button>
 
-            <div class="hint" id="hint"></div>
+            <p id="hint" class="hint"></p>
 
-            <div class="feedback" id="feedback"></div>
+            <div id="feedback"></div>
 
-            <button class="next-button" id="nextButton">
+            <button id="nextButton" class="next-button">
                 Próxima pergunta
             </button>
 
-        </div>
+        </section>
 
-        <div class="result" id="result">
+        <section id="result" class="result">
 
             <h2>Quiz finalizado!</h2>
 
             <p>Você acertou:</p>
 
-            <div class="score" id="score"></div>
+            <div id="score"></div>
 
             <p id="message"></p>
 
-            <br>
-
-            <button class="restart" onclick="restartQuiz()">
+            <button id="restartButton">
                 Refazer quiz
             </button>
 
-        </div>
+        </section>
 
-    </div>
+    </main>
 
-    <script>
-
-        const questions = [
-
-            {
-                question: "Qual linguagem é usada principalmente para estruturar o conteúdo de páginas da web?",
-                options: [
-                    "HTML",
-                    "Python",
-                    "SQL",
-                    "C++"
-                ],
-                answer: 0,
-                hint: "Pense na linguagem responsável por organizar títulos, parágrafos, imagens e outros elementos da página.",
-                feedback: [
-                    "HTML é a linguagem de marcação usada para estruturar o conteúdo de páginas web.",
-                    "Python é uma linguagem de programação de uso geral.",
-                    "SQL é usada principalmente para consultar e manipular bancos de dados.",
-                    "C++ é uma linguagem de programação de uso geral."
-                ]
-            },
-
-            {
-                question: "Qual destes dispositivos é usado para encaminhar dados entre diferentes redes de computadores?",
-                options: [
-                    "Monitor",
-                    "Roteador",
-                    "Teclado",
-                    "Impressora"
-                ],
-                answer: 1,
-                hint: "Pense no equipamento que decide por qual caminho os dados devem seguir até outra rede.",
-                feedback: [
-                    "Um monitor exibe informações e não tem como função principal encaminhar dados entre redes.",
-                    "Um roteador encaminha pacotes de dados entre redes diferentes.",
-                    "Um teclado é um dispositivo de entrada.",
-                    "Uma impressora não tem como função principal encaminhar dados entre redes."
-                ]
-            },
-
-            {
-                question: "Qual é a finalidade principal de uma senha forte?",
-                options: [
-                    "Aumentar a velocidade da internet",
-                    "Proteger o acesso a uma conta",
-                    "Melhorar a qualidade da tela",
-                    "Aumentar o armazenamento"
-                ],
-                answer: 1,
-                hint: "Relacione a senha à segurança e ao controle de acesso.",
-                feedback: [
-                    "A força de uma senha não altera a velocidade da conexão.",
-                    "Uma senha forte dificulta que pessoas não autorizadas consigam acessar uma conta.",
-                    "A qualidade da tela depende do hardware e das configurações de exibição.",
-                    "Uma senha não aumenta a capacidade de armazenamento."
-                ]
-            },
-
-            {
-                question: "O que caracteriza principalmente o armazenamento em nuvem?",
-                options: [
-                    "Guardar dados apenas em papel",
-                    "Guardar dados em servidores acessíveis pela internet",
-                    "Guardar dados somente na memória RAM",
-                    "Guardar dados somente em pendrives"
-                ],
-                answer: 1,
-                hint: "Pense em onde os dados ficam quando você consegue acessá-los de diferentes dispositivos pela internet.",
-                feedback: [
-                    "O armazenamento em nuvem utiliza recursos computacionais e servidores.",
-                    "Na computação em nuvem, os dados podem ser armazenados em servidores remotos e acessados pela internet.",
-                    "A RAM é uma memória temporária do dispositivo.",
-                    "Um pendrive é um meio físico de armazenamento local."
-                ]
-            },
-
-            {
-                question: "Qual atitude contribui para aumentar a segurança ao navegar na internet?",
-                options: [
-                    "Usar a mesma senha em todos os sites",
-                    "Clicar em qualquer link recebido",
-                    "Manter sistemas e aplicativos atualizados",
-                    "Compartilhar senhas com outras pessoas"
-                ],
-                answer: 2,
-                hint: "Considere qual hábito ajuda a corrigir vulnerabilidades conhecidas nos programas.",
-                feedback: [
-                    "Reutilizar a mesma senha aumenta o impacto caso uma conta seja comprometida.",
-                    "Links desconhecidos podem levar a páginas maliciosas ou tentativas de fraude.",
-                    "Atualizações podem corrigir falhas de segurança e ajudam a manter sistemas protegidos.",
-                    "Compartilhar senhas aumenta o risco de acesso não autorizado."
-                ]
-            }
-
-        ];
-
-        let currentQuestion = 0;
-        let score = 0;
-
-        const questionElement = document.getElementById("question");
-        const optionsElement = document.getElementById("options");
-        const questionNumberElement = document.getElementById("questionNumber");
-        const feedbackElement = document.getElementById("feedback");
-        const nextButton = document.getElementById("nextButton");
-        const hintButton = document.getElementById("hintButton");
-        const hintElement = document.getElementById("hint");
-        const progressBar = document.getElementById("progressBar");
-
-        function loadQuestion() {
-
-            const question = questions[currentQuestion];
-
-            questionNumberElement.textContent =
-                `Pergunta ${currentQuestion + 1} de ${questions.length}`;
-
-            questionElement.textContent = question.question;
-
-            optionsElement.innerHTML = "";
-
-            feedbackElement.style.display = "none";
-            feedbackElement.className = "feedback";
-
-            hintElement.style.display = "none";
-            hintElement.textContent = question.hint;
-
-            hintButton.style.display = "block";
-
-            nextButton.style.display = "none";
-
-            progressBar.style.width =
-                `${((currentQuestion) / questions.length) * 100}%`;
-
-            question.options.forEach((option, index) => {
-
-                const button = document.createElement("button");
-
-                button.classList.add("option");
-
-                button.textContent =
-                    `${String.fromCharCode(65 + index)}) ${option}`;
-
-                button.onclick = () => selectAnswer(index);
-
-                optionsElement.appendChild(button);
-
-            });
-        }
-
-        function selectAnswer(selectedIndex) {
-
-            const question = questions[currentQuestion];
-
-            const optionButtons =
-                document.querySelectorAll(".option");
-
-            optionButtons.forEach(button => {
-                button.classList.add("disabled");
-            });
-
-            if (selectedIndex === question.answer) {
-
-                optionButtons[selectedIndex]
-                    .classList.add("correct");
-
-                feedbackElement.classList.add("correct");
-
-                feedbackElement.textContent =
-                    question.feedback[selectedIndex];
-
-                score++;
-
-            } else {
-
-                optionButtons[selectedIndex]
-                    .classList.add("wrong");
-
-                optionButtons[question.answer]
-                    .classList.add("correct");
-
-                feedbackElement.classList.add("wrong");
-
-                feedbackElement.textContent =
-                    question.feedback[selectedIndex];
-            }
-
-            feedbackElement.style.display = "block";
-
-            nextButton.style.display = "block";
-        }
-
-        hintButton.onclick = function() {
-
-            hintElement.style.display = "block";
-
-            hintButton.style.display = "none";
-
-        };
-
-        nextButton.onclick = function() {
-
-            currentQuestion++;
-
-            if (currentQuestion < questions.length) {
-
-                loadQuestion();
-
-            } else {
-
-                showResult();
-
-            }
-
-        };
-
-        function showResult() {
-
-            document.getElementById("quiz").style.display = "none";
-
-            document.getElementById("result").style.display = "block";
-
-            document.getElementById("score").textContent =
-                `${score}/${questions.length}`;
-
-            const percentage =
-                (score / questions.length) * 100;
-
-            let message;
-
-            if (percentage === 100) {
-
-                message = "Parabéns! Você acertou todas as perguntas!";
-
-            } else if (percentage >= 70) {
-
-                message = "Muito bem! Você tem um ótimo conhecimento sobre tecnologia.";
-
-            } else if (percentage >= 50) {
-
-                message = "Bom trabalho! Continue estudando para melhorar ainda mais.";
-
-            } else {
-
-                message = "Continue estudando! Você pode tentar novamente.";
-
-            }
-
-            document.getElementById("message").textContent = message;
-
-        }
-
-        function restartQuiz() {
-
-            currentQuestion = 0;
-
-            score = 0;
-
-            document.getElementById("quiz").style.display = "block";
-
-            document.getElementById("result").style.display = "none";
-
-            loadQuestion();
-
-        }
-
-        loadQuestion();
-
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
